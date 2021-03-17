@@ -337,6 +337,8 @@ namespace UniversalPatcher
                 return;
             }
 
+            patchListDataTable.Rows.Clear();
+
             foreach (Patch patch1 in patches)
             {
                 DataRow row = patchListDataTable.NewRow();
