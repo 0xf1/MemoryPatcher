@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UMPDataSet" targetNamespace="http://tempuri.org/ProcessListDataSet.xsd" xmlns:mstns="http://tempuri.org/ProcessListDataSet.xsd" xmlns="http://tempuri.org/ProcessListDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="UMPDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="UMPDataSet" msprop:Generator_UserDSName="UMPDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ProcessListDataTable" msprop:Generator_TableClassName="ProcessListDataTableDataTable" msprop:Generator_TableVarName="tableProcessListDataTable" msprop:Generator_RowChangedName="ProcessListDataTableRowChanged" msprop:Generator_TablePropName="ProcessListDataTable" msprop:Generator_RowDeletingName="ProcessListDataTableRowDeleting" msprop:Generator_RowChangingName="ProcessListDataTableRowChanging" msprop:Generator_RowEvHandlerName="ProcessListDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcessListDataTableRowDeleted" msprop:Generator_RowClassName="ProcessListDataTableRow" msprop:Generator_UserTableName="ProcessListDataTable" msprop:Generator_RowEvArgName="ProcessListDataTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PatchListDataTable" msprop:Generator_TableClassName="PatchListDataTableDataTable" msprop:Generator_TableVarName="tablePatchListDataTable" msprop:Generator_RowChangedName="PatchListDataTableRowChanged" msprop:Generator_TablePropName="PatchListDataTable" msprop:Generator_RowDeletingName="PatchListDataTableRowDeleting" msprop:Generator_RowChangingName="PatchListDataTableRowChanging" msprop:Generator_RowEvHandlerName="PatchListDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="PatchListDataTableRowDeleted" msprop:Generator_RowClassName="PatchListDataTableRow" msprop:Generator_UserTableName="PatchListDataTable" msprop:Generator_RowEvArgName="PatchListDataTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
+              <xs:element name="Applied" msprop:Generator_ColumnVarNameInTable="columnApplied" msprop:Generator_ColumnPropNameInRow="Applied" msprop:Generator_ColumnPropNameInTable="AppliedColumn" msprop:Generator_UserColumnName="Applied" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SearchBytes" msprop:Generator_ColumnVarNameInTable="columnSearchBytes" msprop:Generator_ColumnPropNameInRow="SearchBytes" msprop:Generator_ColumnPropNameInTable="SearchBytesColumn" msprop:Generator_UserColumnName="SearchBytes" type="xs:string" minOccurs="0" />
+              <xs:element name="ReplaceBytes" msprop:Generator_ColumnVarNameInTable="columnReplaceBytes" msprop:Generator_ColumnPropNameInRow="ReplaceBytes" msprop:Generator_ColumnPropNameInTable="ReplaceBytesColumn" msprop:Generator_UserColumnName="ReplaceBytes" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="ProcessListDataTableKey1">
+      <xs:selector xpath=".//mstns:ProcessListDataTable" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="PatchListDataTableKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PatchListDataTable" />
+      <xs:field xpath="mstns:Name" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
