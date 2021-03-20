@@ -49,13 +49,13 @@ namespace UniversalPatcher
 
         private static TargetProcess _targetProcess;
         private static List<Patch> _patches;
-        public static List<String> logs;
-        public static void ApplyPatches(TargetProcess targetProcess, ref List<Patch> patches)
+        private static List<String> _logs;
+
+        public static void ApplyPatches(TargetProcess targetProcess, List<Patch> patches, out List<String> logs)
         {
             _targetProcess = targetProcess;
             _patches = patches;
-
-            logs = new List<string>();
+            _logs = new List<string>();
 
             log(DateTime.Now.ToLongTimeString());
             log("attaching to process id: " + _targetProcess.Id);
@@ -67,6 +67,7 @@ namespace UniversalPatcher
 
             log("attaching res: " + res);
 
+            logs = _logs;
         }
         delegate void DebugCallBackDelegate();
         static void DebugCallBack()
@@ -141,7 +142,7 @@ namespace UniversalPatcher
             tw.WriteLine(DateTime.Now + " : " + l);
             tw.Close();
             */
-            logs.Add(l);
+            _logs.Add(l);
         }
 
 

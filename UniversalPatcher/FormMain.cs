@@ -48,11 +48,18 @@ namespace UniversalPatcher
   
         private void ButtonProcessListLookup_Click(object sender, EventArgs e)
         {
-            FormProcessList formProcessList = new FormProcessList();
+            String filter = TargetProcess?.Name ?? "";
+            FormProcessList formProcessList = new FormProcessList(filter);
             if (formProcessList.ShowDialog() == DialogResult.OK)
             {
                 this.TargetProcess = formProcessList.SelectedTargetProcess;
                 this.textBox_TargetProcess.Text = string.Format("{0} ({1})", TargetProcess.Name, TargetProcess.Id);
+
+                foreach(DataRow row in patchListDataTable.Rows)
+                {
+                    row["Applied"] = false;                    
+                }
+                RefreshPatchList();
             }
         }
 
@@ -155,11 +162,13 @@ namespace UniversalPatcher
 
         private void SaveProfile()
         {
+            /*
             if (TargetProcess == null)
             {
                 MessageBox.Show("Target process not selected");
                 return;
             }
+            */
 
             if (patchListDataTable.Rows.Count == 0)
             {
@@ -167,7 +176,7 @@ namespace UniversalPatcher
                 return;
             }
 
-            List<String> lines = new List<string> { TargetProcess.Name };
+            List<String> lines = new List<string> { TargetProcess?.Name ?? "<empty>"};
             foreach (DataRow row in patchListDataTable.Rows)
             {
                 lines.Add(row["Name"].ToString());
@@ -233,8 +242,13 @@ namespace UniversalPatcher
 
         private void RunAllPatchesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            RunAll();
+        }
+
+        private void RunAll()
+        {
             List<Patch> patches = new List<Patch>();
-            foreach(DataRow row in patchListDataTable.Rows)
+            foreach (DataRow row in patchListDataTable.Rows)
             {
                 Patch patch = DataRow2Patch(row);
                 patches.Add(patch);
@@ -267,11 +281,10 @@ namespace UniversalPatcher
                 MessageBox.Show("No patches to apply");
                 return;
             }
-            Patcher.ApplyPatches(this.TargetProcess,ref patches);
 
-            listBox1.DataSource = Patcher.logs;
+            Patcher.ApplyPatches(this.TargetProcess, patches, out List<string> logs);
 
-            tabControl1.SelectTab(1);
+            listBox1.DataSource = logs;            
             
             foreach(Patch patch in patches)
             {
@@ -279,6 +292,10 @@ namespace UniversalPatcher
                 if (row != null)
                 {
                     row["Applied"] = patch.Applied;
+                }
+                if (!patch.Applied)
+                {
+                    tabControl1.SelectTab(1);
                 }
             }
 
@@ -288,6 +305,8 @@ namespace UniversalPatcher
 
         private void LoadProfileFromFile(string profilePath)
         {
+            TargetProcess = null;
+
             TextReader tr = new StreamReader(profilePath);
             List<String> lines = new List<string>();
             String l;
@@ -304,7 +323,7 @@ namespace UniversalPatcher
             {
                 if (i == 0)
                 {
-                    TargetProcess = GetFirstProcessByName(line);
+                    TargetProcess = line.Equals("<empty>") ? null : GetFirstProcessByName(line);
                     if (TargetProcess != null)
                     {
                         this.textBox_TargetProcess.Text = string.Format("{0} ({1})", TargetProcess.Name, TargetProcess.Id);
@@ -371,6 +390,12 @@ namespace UniversalPatcher
                 patches.Add(DataGridViewRowToPatch(row));
             }
             ApplyPatches(patches);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RunAll();
+
         }
     }
 }

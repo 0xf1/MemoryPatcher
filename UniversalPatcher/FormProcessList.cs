@@ -13,17 +13,20 @@ namespace UniversalPatcher
     public partial class FormProcessList : Form
     {
         UMPDataSet.ProcessListDataTableDataTable dataTable;
+        private string filter;
+
         public TargetProcess SelectedTargetProcess { get; private set; }
 
-
-        public FormProcessList()
+        public FormProcessList(string filter)
         {
             InitializeComponent();
+            this.filter = filter;            
         }
 
         private void FormProcessList_Load(object sender, EventArgs e)
         {
             LoadList();
+            textBox1.Text = filter;
         }
 
         private void LoadList()
@@ -33,7 +36,8 @@ namespace UniversalPatcher
             {
                 dataTable.Rows.Add(new string[] { process.ProcessName, process.Id.ToString() });
             }
-            this.dataGridView1.DataSource = dataTable;         
+            dataGridView1.DataSource = dataTable;
+            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
         }
 

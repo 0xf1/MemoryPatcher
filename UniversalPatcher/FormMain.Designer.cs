@@ -122,6 +122,7 @@ namespace UniversalPatcher
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.ShowItemToolTips = true;
             this.menuStrip1.Size = new System.Drawing.Size(342, 27);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
@@ -208,26 +209,31 @@ namespace UniversalPatcher
             // runAllPatchesToolStripMenuItem
             // 
             this.runAllPatchesToolStripMenuItem.Name = "runAllPatchesToolStripMenuItem";
-            this.runAllPatchesToolStripMenuItem.Size = new System.Drawing.Size(155, 24);
+            this.runAllPatchesToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.runAllPatchesToolStripMenuItem.Text = "Run all ";
             this.runAllPatchesToolStripMenuItem.Click += new System.EventHandler(this.RunAllPatchesToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // runSelectedToolStripMenuItem
             // 
             this.runSelectedToolStripMenuItem.Name = "runSelectedToolStripMenuItem";
-            this.runSelectedToolStripMenuItem.Size = new System.Drawing.Size(155, 24);
+            this.runSelectedToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.runSelectedToolStripMenuItem.Text = "Run selected";
             this.runSelectedToolStripMenuItem.Click += new System.EventHandler(this.RunSelectedToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.AutoToolTip = true;
+            this.toolStripMenuItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripMenuItem1.Image = global::UniversalPatcher.Properties.Resources.RunOutline_blue_16x;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 23);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(28, 23);
+            this.toolStripMenuItem1.Text = "Run all";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // processListDataTableBindingSource1
             // 
