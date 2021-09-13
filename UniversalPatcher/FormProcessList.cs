@@ -34,7 +34,7 @@ namespace UniversalPatcher
             dataTable = new UMPDataSet.ProcessListDataTableDataTable();
             foreach(Process process in GetCurrentUserProcesses())
             {
-                dataTable.Rows.Add(new string[] { process.ProcessName, process.Id.ToString() });
+                dataTable.Rows.Add(new string[] { process.ProcessName, process.Id.ToString(), process.MainWindowTitle });
             }
             dataGridView1.DataSource = dataTable;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);

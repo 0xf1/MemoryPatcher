@@ -318,6 +318,8 @@ namespace UniversalPatcher {
             
             private global::System.Data.DataColumn columnId;
             
+            private global::System.Data.DataColumn columnTitle;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ProcessListDataTableDataTable() {
@@ -369,6 +371,14 @@ namespace UniversalPatcher {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TitleColumn {
+                get {
+                    return this.columnTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -404,11 +414,12 @@ namespace UniversalPatcher {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProcessListDataTableRow AddProcessListDataTableRow(string Name, int Id) {
+            public ProcessListDataTableRow AddProcessListDataTableRow(string Name, int Id, string Title) {
                 ProcessListDataTableRow rowProcessListDataTableRow = ((ProcessListDataTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
-                        Id};
+                        Id,
+                        Title};
                 rowProcessListDataTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessListDataTableRow);
                 return rowProcessListDataTableRow;
@@ -433,6 +444,7 @@ namespace UniversalPatcher {
             internal void InitVars() {
                 this.columnName = base.Columns["Name"];
                 this.columnId = base.Columns["Id"];
+                this.columnTitle = base.Columns["Title"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -442,6 +454,8 @@ namespace UniversalPatcher {
                 base.Columns.Add(this.columnName);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTitle);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("ProcessListDataTableKey1", new global::System.Data.DataColumn[] {
                                 this.columnId}, false));
                 this.columnId.Unique = true;
@@ -919,6 +933,22 @@ namespace UniversalPatcher {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Title {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcessListDataTable.TitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Title\' in table \'ProcessListDataTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProcessListDataTable.TitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableProcessListDataTable.NameColumn);
             }
@@ -939,6 +969,18 @@ namespace UniversalPatcher {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIdNull() {
                 this[this.tableProcessListDataTable.IdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTitleNull() {
+                return this.IsNull(this.tableProcessListDataTable.TitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTitleNull() {
+                this[this.tableProcessListDataTable.TitleColumn] = global::System.Convert.DBNull;
             }
         }
         
