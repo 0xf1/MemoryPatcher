@@ -31,14 +31,15 @@ namespace UniversalPatcher
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.processListDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uMPDataSet = new UniversalPatcher.UMPDataSet();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.processListDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uMPDataSet = new UniversalPatcher.UMPDataSet();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processListDataTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uMPDataSet)).BeginInit();
@@ -57,7 +58,8 @@ namespace UniversalPatcher
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
             this.idDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn});
+            this.titleDataGridViewTextBoxColumn,
+            this.startTimeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.processListDataTableBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(3, 34);
             this.dataGridView1.MultiSelect = false;
@@ -67,6 +69,16 @@ namespace UniversalPatcher
             this.dataGridView1.Size = new System.Drawing.Size(739, 317);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            // 
+            // processListDataTableBindingSource
+            // 
+            this.processListDataTableBindingSource.DataMember = "ProcessListDataTable";
+            this.processListDataTableBindingSource.DataSource = this.uMPDataSet;
+            // 
+            // uMPDataSet
+            // 
+            this.uMPDataSet.DataSetName = "UMPDataSet";
+            this.uMPDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button1
             // 
@@ -100,21 +112,10 @@ namespace UniversalPatcher
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyDown);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox1_KeyPress);
             // 
-            // processListDataTableBindingSource
-            // 
-            this.processListDataTableBindingSource.DataMember = "ProcessListDataTable";
-            this.processListDataTableBindingSource.DataSource = this.uMPDataSet;
-            // 
-            // uMPDataSet
-            // 
-            this.uMPDataSet.DataSetName = "UMPDataSet";
-            this.uMPDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.FillWeight = 1F;
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -124,7 +125,6 @@ namespace UniversalPatcher
             // 
             this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.FillWeight = 1F;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
@@ -137,6 +137,15 @@ namespace UniversalPatcher
             this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startTimeDataGridViewTextBoxColumn
+            // 
+            this.startTimeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "Start Time";
+            this.startTimeDataGridViewTextBoxColumn.HeaderText = "Start Time";
+            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
+            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.startTimeDataGridViewTextBoxColumn.Width = 150;
             // 
             // FormProcessList
             // 
@@ -170,5 +179,6 @@ namespace UniversalPatcher
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn;
     }
 }
